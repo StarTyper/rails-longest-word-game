@@ -1,23 +1,26 @@
+<div class="container d-inline-flex justify-content-center m-5">
+  <div class="card p-3 justify-content-center">
 
-<div class="p-3">
-
-  <h1>NEW GAME</h1>
-
-  <div class="d-flex flex-row mb-3">
-    <% @letters.each do |letter| %>
-    <div class="card p-1 m-1 bg-light">
-    <%= letter %>
+    <div class="container d-inline-flex justify-content-center">
+      <h1>NEW GAME</h1>
     </div>
-    <% end %>
+    
+    <div class="d-flex flex-row mb-3">
+      <% @letters.each do |letter| %>
+      <div class="card p-1 m-1 bg-light style="width: 16px">
+      <%= letter %>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <form action="/score" method="post" data-turbo="false" class="d-grid gap-2">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <input type="text" name="input" class="form-control" id="exampleInputEmail1" placeholder="Type your word here" aria-describedby="emailHelp">
+        <button type="submit" class="btn btn-primary">Play</button>
+        <%= hidden_field_tag :array, @letters %>
+      </form>
+    </div>
+
   </div>
-
-  <form action="/score" method="post" data-turbo="false">
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <div class="mb-3 col-3">
-      <input type="text" name="input" class="form-control mb-3" id="exampleInputEmail1" placeholder="Type your word here" aria-describedby="emailHelp">
-      <button type="submit" class="btn btn-primary">Submit</button>
-      <%= hidden_field_tag :array, @letters %>
-    </div>
-  </form>
-
 </div>

@@ -25,10 +25,11 @@ class GamesController < ApplicationController
       if @input.upcase.split('').all? { |e| @array.include?(e) }
         @message = "Congratulations! 🎉 '#{@input}' is a valid English word!"
       else
-        @message = "Sorry but #{@input} can't be built out of #{@array.join(', ')}."
+        @message = "Sorry, but '#{@input}' can't be built out of #{@array.join(', ')}. 🔡"
       end
     else
-      @message = "Sorry but #{@input} does not seem to be a valid English word."
+      @message = "Sorry, but '#{@input}' does not seem to be a valid English word. 🤷🏻‍♂️"
     end
   end
 end
+
